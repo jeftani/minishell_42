@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_base.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 11:54:07 by gloukas           #+#    #+#             */
-/*   Updated: 2023/06/23 22:21:02 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/15 02:28:40 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,20 +76,36 @@ int	check_pipe(char *cmd_line, char c)
 
 int	is_unclosed_quoate(char *cmd_line)
 {
+	int	booly;
 	int	i;
-	int	count;
 
 	i = 0;
-	count = 0;
-	while (cmd_line[i])
+	booly = 0;
+	while (cmd_line[++i])
 	{
-		if (cmd_line[i] == '\"')
-			count++;
-		i++;
+		if (cmd_line[i] == '"' || cmd_line[i] == '\'')
+		{
+			if (cmd_line[i - 1] == '"')
+			{
+				while (cmd_line[++i] && cmd_line[i] != '"')
+					i++;
+				if (cmd_line[i] == '"')
+					booly = 0;
+				if (!cmd_line[i])
+					booly = 1;
+			}
+			else if (cmd_line[i - 1] == '\'')
+			{
+				while (cmd_line[++i] && cmd_line[i] != '\'')
+					i++;
+				if (cmd_line[i] == '\'')
+					booly = 0;
+				if (!cmd_line[i])
+					booly = 1;
+			}
+		}
 	}
-	if (count % 2)
-		return (1);
-	return (0);
+	return (booly);
 }
 
 int	parse(char *cmd_line)

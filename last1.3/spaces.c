@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   spaces.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 12:07:24 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/14 08:11:00 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/15 02:11:06 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ void	add_spaces(char **cmd_line)
 	int		j;
 
 	stock = malloc((how_much_outside(*cmd_line) + ft_strlen(*cmd_line) + 1));
-	printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, stock);
+	printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__,
+			stock);
 	i = -1;
 	j = 0;
 	while (++i < ft_strlen(*cmd_line))
