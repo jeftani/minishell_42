@@ -6,7 +6,7 @@
 /*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 00:13:44 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/15 05:48:34 by gloukas          ###   ########.fr       */
+/*   Updated: 2023/07/15 21:37:57 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	main(int ac, char **av, char **env)
 		if (!cmd_line)
 			break ;
 		add_history(cmd_line);
-		if (!parse(cmd_line))
+		if (!parse(cmd_line) && cmd_line[0] && cmd_line[0] != '\n')
 		{
 			add_spaces(&cmd_line);
 			cmd_line = expand(cmd_line, environment);
@@ -56,7 +56,7 @@ int	main(int ac, char **av, char **env)
 			//lexer = delete_quoates_a(&lexer);
 			ft_execute1(environment, lexer);
 		}
-		else
+		else if (parse(cmd_line))
 			printf("❌\033[0;31m ERROR ❌ \033[0m\n");
 	}
 	printf("exit\n");

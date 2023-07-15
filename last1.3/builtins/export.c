@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 09:12:35 by ajeftani          #+#    #+#             */
-/*   Updated: 2023/07/14 15:04:22 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/15 21:24:06 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	add_var(t_env *environment, char *line)
 	present = search_env_elem(environment, newelem->key);
 	if (present)
 	{
-		ft_link(newelem,present);
+		ft_link(newelem, present);
 		free(newelem->key);
 		free(newelem);
 	}
@@ -113,4 +113,3 @@ int	export(t_env *environment, char **cmd)
 	g_exit = EXIT_SUCCESS;
 	return (g_exit);
 }
-
