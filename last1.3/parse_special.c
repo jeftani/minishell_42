@@ -6,26 +6,46 @@
 /*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 17:27:12 by gloukas           #+#    #+#             */
-/*   Updated: 2023/06/03 14:41:06 by gloukas          ###   ########.fr       */
+/*   Updated: 2023/07/15 03:35:44 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	check_derec(char *cmd_line)
+int	is_unclosed_quoate(char *cmd_line)
 {
+	int	booly;
 	int	i;
 
-	i = ft_strlen(cmd_line) - 1;
-	while (cmd_line[i] && (cmd_line[i] == 32 || (cmd_line[i] >= 9
-				&& cmd_line[i] <= 13)))
-		i--;
-	if (cmd_line[i] == '>' || cmd_line[i] == '<')
+	i = 0;
+	booly = 0;
+	while (cmd_line[i])
 	{
-		g_exit = 258;
-		return (1);
+		if (cmd_line[i] == '"' || cmd_line[i] == '\'')
+		{
+			i++;
+			if (cmd_line[i - 1] == '"')
+			{
+				while (cmd_line[i] && cmd_line[i] != '"')
+					i++;
+				if (cmd_line[i] == '"')
+					booly = 0;
+				if (!cmd_line[i])
+					booly = 1;
+			}
+			else if (cmd_line[i - 1] == '\'')
+			{
+				while (cmd_line[i] && cmd_line[i] != '\'')
+					i++;
+				if (cmd_line[i] == '\'')
+					booly = 0;
+				if (!cmd_line[i])
+					booly = 1;
+			}
+		}
+		i++;
 	}
-	return (0);
+	return (booly);
 }
 
 int	is_valid_closing(int *open_count)
@@ -48,9 +68,11 @@ int	check_parenthesis(char *cmd_line)
 	i = 0;
 	while (cmd_line[i])
 	{
-		if (cmd_line[i] == '(')
+		if (cmd_line[i] == '(' && !is_inside_quotes(cmd_line, i)
+			&& !is_inside_single_quotes(cmd_line, i))
 			open_parenthesis++;
-		else if (cmd_line[i] == ')')
+		else if (cmd_line[i] == ')' && !is_inside_quotes(cmd_line, i)
+				&& !is_inside_single_quotes(cmd_line, i))
 		{
 			if (is_valid_closing(&open_parenthesis))
 				return (1);
@@ -74,9 +96,11 @@ int	check_braces(char *cmd_line)
 	i = 0;
 	while (cmd_line[i])
 	{
-		if (cmd_line[i] == '{')
+		if (cmd_line[i] == '{' && !is_inside_quotes(cmd_line, i)
+			&& !is_inside_single_quotes(cmd_line, i))
 			open_brace++;
-		else if (cmd_line[i] == '}')
+		else if (cmd_line[i] == '}' && !is_inside_quotes(cmd_line, i)
+				&& !is_inside_single_quotes(cmd_line, i))
 		{
 			if (is_valid_closing(&open_brace))
 				return (1);

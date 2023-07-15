@@ -6,7 +6,7 @@
 /*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 11:54:07 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/15 02:28:40 by gloukas          ###   ########.fr       */
+/*   Updated: 2023/07/15 03:43:18 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,17 @@ int	check_oper(char c, char *cmd_line, int x)
 	{
 		if (cmd_line[i] == c)
 		{
-			if (cmd_line[i + 1] == c)
+			if (cmd_line[i + 1] == c && !is_inside_quotes(cmd_line, i)
+				&& !is_inside_single_quotes(cmd_line, i))
 			{
 				if (x == 1)
 					return (1);
 			}
-			if (x == 2 && cmd_line[i + 1] == c && cmd_line[i + 2] == c)
+			if (x == 2 && cmd_line[i + 1] == c && cmd_line[i + 2] == c
+				&& !is_inside_quotes(cmd_line, i + 1)
+				&& !is_inside_single_quotes(cmd_line, i + 1)
+				&& !is_inside_quotes(cmd_line, i + 2)
+				&& !is_inside_single_quotes(cmd_line, i + 2))
 				return (1);
 		}
 		i++;
@@ -74,38 +79,20 @@ int	check_pipe(char *cmd_line, char c)
 	return (0);
 }
 
-int	is_unclosed_quoate(char *cmd_line)
+int	check_derec(char *cmd_line)
 {
-	int	booly;
 	int	i;
 
-	i = 0;
-	booly = 0;
-	while (cmd_line[++i])
+	i = ft_strlen(cmd_line) - 1;
+	while (cmd_line[i] && (cmd_line[i] == 32 || (cmd_line[i] >= 9
+				&& cmd_line[i] <= 13)))
+		i--;
+	if ((cmd_line[i] == '>' || cmd_line[i] == '<'))
 	{
-		if (cmd_line[i] == '"' || cmd_line[i] == '\'')
-		{
-			if (cmd_line[i - 1] == '"')
-			{
-				while (cmd_line[++i] && cmd_line[i] != '"')
-					i++;
-				if (cmd_line[i] == '"')
-					booly = 0;
-				if (!cmd_line[i])
-					booly = 1;
-			}
-			else if (cmd_line[i - 1] == '\'')
-			{
-				while (cmd_line[++i] && cmd_line[i] != '\'')
-					i++;
-				if (cmd_line[i] == '\'')
-					booly = 0;
-				if (!cmd_line[i])
-					booly = 1;
-			}
-		}
+		g_exit = 258;
+		return (1);
 	}
-	return (booly);
+	return (0);
 }
 
 int	parse(char *cmd_line)

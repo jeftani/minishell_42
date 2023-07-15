@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expand_quoates.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 02:42:01 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/14 08:10:34 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/15 05:43:19 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ t_lexer	*delete_quoates_a(t_lexer **lexer)
 	}
 	return (*lexer);
 }
-
 char	*delete_quoates_b(char *string)
 {
 	int	length;
@@ -78,7 +77,7 @@ char	*get_expanded(char *cmd_line, char *new, int *i, t_env *env)
 	key = malloc(len + 1);
 	ft_memcpy(key, cmd_line + start, len);
 	key[len] = '\0';
-	value = search_env_elem1(key,env->env);
+	value = search_env_elem1(key, env->env);
 	if (value)
 		new = ft_strjoin(new, value);
 	else
@@ -89,7 +88,7 @@ char	*get_expanded(char *cmd_line, char *new, int *i, t_env *env)
 	return (new);
 }
 
-char	*expand(char *cmd_line , t_env *env)
+char	*expand(char *cmd_line, t_env *env)
 {
 	int		i;
 	char	*new;
@@ -101,11 +100,14 @@ char	*expand(char *cmd_line , t_env *env)
 	new = ft_strdup("");
 	while (cmd_line[++i])
 	{
+		if (cmd_line[i] == '$' && cmd_line[i + 1] && (cmd_line[i + 1] == ' '
+				|| cmd_line[i + 1] == '"' || cmd_line[i + 1] == '\''))
+			return (cmd_line);
 		if (cmd_line[i] == '$' && cmd_line[i + 1]
 			&& (!is_inside_single_quotes(cmd_line, i)
 				|| (is_inside_single_quotes(cmd_line, i)
 					&& is_inside_quotes(cmd_line, i))))
-						new = get_expanded(cmd_line, new, &i,env);
+			new = get_expanded(cmd_line, new, &i, env);
 		else
 		{
 			c[0] = cmd_line[i];
