@@ -25,7 +25,7 @@ int	is_empty(char *cmd_line)
 	while (cmd_line[i] && (cmd_line[i] == 32 || (cmd_line[i] >= 9
 				&& cmd_line[i] <= 13)))
 		i++;
-	if (!cmd_line[i])
+	if (!cmd_line[i] || cmd_line[i] == '\n')
 	{
 		g_exit = 0;
 		return (0);
