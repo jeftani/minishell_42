@@ -6,7 +6,7 @@
 /*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 11:54:07 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/15 03:43:18 by gloukas          ###   ########.fr       */
+/*   Updated: 2023/07/16 23:55:09 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int	check_derec(char *cmd_line)
 int	parse(char *cmd_line)
 {
 	if (!is_empty(cmd_line))
-		return (0);
+		return (2);
 	if (check_oper('|', cmd_line, 1) || check_oper('>', cmd_line, 2)
 		|| check_oper('<', cmd_line, 2))
 		return (1);
