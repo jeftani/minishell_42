@@ -1,5 +1,4 @@
 #include "../minishell.h"
-
 void putstr_trim(char *cmd)
 {
     int i = 0;
@@ -26,10 +25,10 @@ void echo(char **cmd)
     {
         write(1,"\n",1);
     }
-    if(cmd[1][0] == '-' && cmd[1][1] == 'n' && cmd[1][2] == '\0')
+    if(cmd[1] && cmd[1][0] == '-' && cmd[1][1] == 'n' && cmd[1][2] == '\0')
         {
-        flag = 1;
-        ++i;
+            flag = 1;
+            ++i;
         }
     while(cmd[++i])
     {
