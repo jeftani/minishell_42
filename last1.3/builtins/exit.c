@@ -12,6 +12,32 @@
 
 #include "../minishell.h"
 
+//char *ft_strncpy(char *dest, const char *src, size_t n) {
+//    char *result = dest;
+
+//    while (*src && n > 0) {
+//        *dest++ = *src++;
+//        n--;
+//    }
+
+//    while (n > 0) {
+//        *dest++ = '\0';
+//        n--;
+//    }
+
+//    return result;
+//}
+
+//void trimDoubleQuotes(char* str) {
+//    size_t len = ft_strlen(str);
+//    while (len >= 2 && str[0] == '"' && str[len - 1] == '"') {
+//        ft_strncpy(str, str + 1, len - 2);
+//        str[len - 2] = '\0';
+//    }
+//}
+
+
+
 void	ft_what_else(char **cmd, t_env *environment, int j, int b)
 {
 	int		i;
@@ -26,7 +52,6 @@ void	ft_what_else(char **cmd, t_env *environment, int j, int b)
 	while (cmd[j][b] == ' ')
 		b++;
 	str = malloc(sizeof(char) * (ft_strlen(cmd[j]) + 1));
-	printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, str);
 	while (cmd[j][b] != '\0')
 	{
 		if (cmd[j][b] != ' ')
@@ -83,11 +108,14 @@ void	ft_continue5(char **cmd, t_env *environment)
 		j++;
 	if (cmd[1])
 	{
-		while (cmd[1][i])
+		//trimDoubleQuotes(cmd[1]);
+		while (cmd[1][j])
 		{
-			if (ft_isdigit(cmd[1][i]) && ft_atoi(cmd[1] + j) != 0
-				&& ft_atoi(cmd[1] + j) != -1)
-				i++;
+
+			if (ft_isdigit(cmd[1][j]) || (ft_atoi(cmd[1]) != 0 && ft_atoi(cmd[1]) != -1))
+			{
+				j++;
+			}
 			else
 			{
 				exit_status(cmd, 2);
