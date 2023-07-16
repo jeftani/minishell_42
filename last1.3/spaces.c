@@ -56,7 +56,7 @@ int	how_much_outside(char *cmd_line)
 		if ((cmd_line[i] == '|' || cmd_line[i] == '<' || cmd_line[i] == '>')
 			&& !is_inside_quotes(cmd_line, i)
 			&& !is_inside_single_quotes(cmd_line, i))
-			if (cmd_line[i] == '>' || cmd_line[i] == '<')
+			//if (cmd_line[i] == '>' || cmd_line[i] == '<')
 				count++;
 		i++;
 	}
