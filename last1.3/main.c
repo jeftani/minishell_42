@@ -47,7 +47,7 @@ int	main(int ac, char **av, char **env)
 		if (!cmd_line)
 			break ;
 		add_history(cmd_line);
-		if (!parse(cmd_line) && cmd_line[0] && cmd_line[0] != '\n')
+		if (!parse(cmd_line) && cmd_line[ft_strlen(cmd_line)] && cmd_line[ft_strlen(cmd_line)] != '\n')
 		{
 			add_spaces(&cmd_line);
 			cmd_line = expand(cmd_line, environment);
