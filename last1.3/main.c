@@ -6,7 +6,7 @@
 /*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 00:13:44 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/15 21:37:57 by gloukas          ###   ########.fr       */
+/*   Updated: 2023/07/16 06:07:27 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	main(int ac, char **av, char **env)
 			cmd_line = expand(cmd_line, environment);
 			lexer = split_pipe(cmd_line);
 			lexer = get_token(&lexer, cmd_line);
-			//lexer = delete_quoates_a(&lexer);
+			lexer = delete_quoates_a(&lexer);
 			ft_execute1(environment, lexer);
 		}
 		else if (parse(cmd_line))

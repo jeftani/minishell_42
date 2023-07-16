@@ -15,7 +15,7 @@ SRC_LIB		=	libft/ft_isalpha.c libft/ft_isdigit.c libft/ft_isalnum.c libft/ft_isa
 				libft/ft_strjoin.c libft/ft_strtrim.c libft/ft_split.c libft/ft_itoa.c \
 				libft/ft_strmapi.c libft/ft_striteri.c libft/ft_putchar_fd.c libft/ft_putstr_fd.c \
 				libft/ft_putendl_fd.c libft/ft_putnbr_fd.c
-SRC			=	token.c token_help.c split_space.c split_pipe.c expand_quoates.c spaces.c parse_special.c parse_base.c main.c \
+SRC			=	token.c token_help.c space_expand.c split_pipe.c remove_quoates.c spaces.c parse_special.c parse_base.c main.c \
 				utils/ft_execute.c utils/ft_is_alpha.c utils/ft_isalnum.c utils/ft_strchr1.c utils/ft_strcmp.c utils/ft_strdup.c utils/ft_strjoin.c utils/ft_substr.c builtins/unset.c \
 				builtins/echo.c  builtins/exit.c builtins/cd.c  utils/ft_putstr_fd.c utils/ft_isdigit.c utils/ft_atoi1.c utils/ft_strncmp1.c utils/env_stuff.c ft_all_redirections_con.c\
 				builtins/env.c builtins/export.c builtins/pwd.c ft_execute1.c ft_execute2.c ft_execute3.c ft_all_redirections.c heredoc.c err_handler.c err_handler1.c builtins_extention/cd_ex.c builtins_extention/export_ex.c \

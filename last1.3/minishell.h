@@ -6,7 +6,7 @@
 /*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 00:12:21 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/15 03:11:14 by gloukas          ###   ########.fr       */
+/*   Updated: 2023/07/16 06:04:20 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,13 +223,12 @@ void					add_spaces_help(char **cmd_line, char **stock, int i,
 							int *j);
 void					add_spaces(char **cmd_line);
 
-//	expand_quoates.c
+//	remove_quoates.c
+void					delete_quoates_c(char **readPtr, char **writePtr,
+							int *i, int *j);
 char					**help_quoates(char **cmd);
 t_lexer					*delete_quoates_a(t_lexer **lexer);
-char					*delete_quoates_b(char *string);
-char					*get_expanded(char *cmd_line, char *new, int *i,
-							t_env *env);
-char					*expand(char *cmd_line, t_env *env);
+void					delete_quoates_b(char *string);
 
 // 	split_pipe.c
 t_lexer					*create_lexer(char *command);
@@ -238,7 +237,10 @@ void					split_pipe_help_b(char *cmd_line, t_splity *s,
 							t_lexer **head);
 t_lexer					*split_pipe(char *cmd_line);
 
-//	split_space.c
+//	space_expand.c
+char					*get_expanded(char *cmd_line, char *new, int *i,
+							t_env *env);
+char					*expand(char *cmd_line, t_env *env);
 void					arg_split_help(char *cmd_line, t_splity *s);
 char					**arg_split(char *cmd_line);
 

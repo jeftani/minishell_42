@@ -102,7 +102,6 @@ void	executing(t_env *environment, t_lexer *lexer)
 				execute_child(lexer, environment, fd);
 			else
 				parent(lexer, fd);
-			lexer = lexer->next;
 		}
 		if (lexer && lexer->command != NULL)
 			ft_execute_one(environment, lexer);

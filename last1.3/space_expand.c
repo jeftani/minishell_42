@@ -1,65 +1,69 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   expand_quoates.c                                   :+:      :+:    :+:   */
+/*   space_expand.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 02:42:01 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/15 05:43:19 by gloukas          ###   ########.fr       */
+/*   Created: 2023/07/16 05:10:43 by gloukas           #+#    #+#             */
+/*   Updated: 2023/07/16 05:10:45 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	**help_quoates(char **cmd)
+void	arg_split_help(char *cmd_line, t_splity *s)
 {
-	int	i;
-
-	i = 0;
-	if (cmd != NULL)
+	s->tab = (char *)malloc((ft_strlen(cmd_line) + 1) * sizeof(char));
+	printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__,
+			s->tab);
+	if (!(s->tab))
+		return ;
+	s->i = -1;
+	while (cmd_line[++(s->i)])
 	{
-		i = 0;
-		while (cmd[i])
-		{
-			cmd[i] = delete_quoates_b(cmd[i]);
-			i++;
-		}
+		if (cmd_line[s->i] == ' ' && !is_inside_quotes(cmd_line, s->i)
+			&& !is_inside_single_quotes(cmd_line, s->i))
+			s->tab[s->i] = '1';
+		else
+			s->tab[s->i] = '2';
 	}
-	return (cmd);
+	s->tab[s->i] = '\0';
+	s->i = -1;
+	s->count = 0;
+	while (s->tab[++(s->i)])
+		if (s->tab[s->i] == '2' && (s->i == 0 || s->tab[s->i - 1] == '1'))
+			(s->count)++;
 }
 
-t_lexer	*delete_quoates_a(t_lexer **lexer)
+char	**arg_split(char *cmd_line)
 {
-	t_lexer	*head;
+	t_splity	s;
 
-	head = *lexer;
-	while (head != NULL)
+	arg_split_help(cmd_line, &s);
+	s.res = (char **)malloc((s.count + 1) * sizeof(char *));
+	printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__,
+			s.res);
+	if (!(s.res))
 	{
-		if (head->details != NULL)
-		{
-			head->details->string = help_quoates(head->details->string);
-			head->details->r_in_file = help_quoates(head->details->r_in_file);
-			head->details->r_out_file = help_quoates(head->details->r_out_file);
-			head->details->r_app_file = help_quoates(head->details->r_app_file);
-			head->details->herdoc_lim = help_quoates(head->details->herdoc_lim);
-		}
-		head = head->next;
+		free(s.tab);
+		return (NULL);
 	}
-	return (*lexer);
-}
-char	*delete_quoates_b(char *string)
-{
-	int	length;
-
-	length = strlen(string);
-	if (length >= 2 && (string[0] == '"' || string[0] == '\'') && string[length
-			- 1] == string[0])
+	s.j = -1;
+	s.i = 0;
+	while (++(s.j) < s.count)
 	{
-		string[length - 1] = '\0';
-		return (string + 1);
+		while (cmd_line[s.i] && s.tab[s.i] == '1')
+			(s.i)++;
+		s.start = s.i;
+		while (cmd_line[s.i] && s.tab[s.i] == '2')
+			(s.i)++;
+		s.res[s.j] = ft_substr(cmd_line, s.start, s.i - s.start);
+		ft_free(s.res, s.j);
 	}
-	return (string);
+	s.res[s.j] = NULL;
+	free(s.tab);
+	return (s.res);
 }
 
 char	*get_expanded(char *cmd_line, char *new, int *i, t_env *env)
