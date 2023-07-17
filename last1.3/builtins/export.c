@@ -15,14 +15,18 @@
 t_env_elem	*search_env_elem(t_env *env, char *key)
 {
 	t_env_elem	*tmp;
+	int len;
 
 	tmp = env->head;
-
-	while (tmp && ft_strncmp12(tmp->key, key, ft_strlen(key)))
+	len = ft_strlen(key);
+	if(ft_strchr1(key,'+'))
+		len--;
+	while (tmp && ft_strncmp12(tmp->key, key, len))
 	{
 		tmp = tmp->next;
 	}
-	while (tmp && ft_strncmp12(tmp->key, key, ft_strlen(tmp->key)))
+
+	while (tmp && ft_strncmp12(tmp->key, key,ft_strlen(tmp->key)))
 	{
 		tmp = tmp->next;
 	}
