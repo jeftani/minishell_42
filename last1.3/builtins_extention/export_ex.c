@@ -14,18 +14,20 @@
 
 void ft_link(t_env_elem	*newelem,t_env_elem	*present)
 {
-	if (ft_strchr(newelem->key, '+'))
+
+	if (ft_strchr(newelem->key, '+') && present->value)
 		{
 			present->value = ft_strjoin(present->value, newelem->value);
 			free(newelem->value);
 		}
-		else if(ft_strchr(newelem->key, '=') && present->value)
+	else if(ft_strchr(newelem->key, '=') && present->value)
 		{
 			present->value = ft_strjoin(present->value, newelem->value);
 			free(newelem->value);
 		}
 		else
 		{
+			printf("map\n");
 			present->value = newelem->value;
 			//free(present->value);
 		}
