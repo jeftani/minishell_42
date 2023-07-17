@@ -17,8 +17,15 @@ t_env_elem	*search_env_elem(t_env *env, char *key)
 	t_env_elem	*tmp;
 
 	tmp = env->head;
+
 	while (tmp && ft_strncmp12(tmp->key, key, ft_strlen(key)))
+	{
 		tmp = tmp->next;
+	}
+	while (tmp && ft_strncmp12(tmp->key, key, ft_strlen(tmp->key)))
+	{
+		tmp = tmp->next;
+	}
 	return (tmp);
 }
 
