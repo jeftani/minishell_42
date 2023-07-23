@@ -6,7 +6,7 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 03:18:00 by ajeftani          #+#    #+#             */
-/*   Updated: 2023/07/21 05:49:50 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/23 15:49:43 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	to_do_her(char *delimiter, t_env *env)
 	str = readline("> ");
 	while (str && ft_strcmp(str, delimiter))
 	{
-		str = expand(str, env,NULL); // NULL
+		str = expand(str, env, NULL); // NULL
 		write(fd, str, ft_strlen(str));
 		write(fd, "\n", 1);
 		free(str);

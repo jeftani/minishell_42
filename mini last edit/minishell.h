@@ -6,7 +6,7 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 00:12:21 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/23 14:22:31 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/23 15:47:12 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,6 +199,8 @@ void					case2(t_lexer *lexer, t_var *var);
 void					ft_link(t_env_elem *newelem, t_env_elem *present);
 void					ft_err(char *str, char *message, int c);
 char					*search_env_elem2(char *key, char **env , t_env *envi);
+t_env					*find_it(t_env *environment, char *key);
+char					**ft_handl(t_lexer *lexer, t_env *environment);
 
 //execution
 void					ft_redirection(t_lexer *lexer);

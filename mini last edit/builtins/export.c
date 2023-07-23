@@ -6,7 +6,7 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 09:12:35 by ajeftani          #+#    #+#             */
-/*   Updated: 2023/07/23 14:26:29 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/23 15:12:32 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,17 @@
 t_env_elem	*search_env_elem(t_env *env, char *key)
 {
 	t_env_elem	*tmp;
-	int len;
+	int			len;
 
 	tmp = env->head;
 	len = ft_strlen(key);
-	if(ft_strchr1(key,'+'))
+	if (ft_strchr1(key, '+'))
 		len--;
 	while (tmp && ft_strncmp12(tmp->key, key, len))
 	{
 		tmp = tmp->next;
 	}
-
-	while (tmp && ft_strncmp12(tmp->key, key,ft_strlen(tmp->key)))
+	while (tmp && ft_strncmp12(tmp->key, key, ft_strlen(tmp->key)))
 	{
 		tmp = tmp->next;
 	}
@@ -111,10 +110,10 @@ int	export(t_env *environment, char **cmd)
 	j = 1;
 	if (!cmd[1])
 	{
-		if(environment->head)
+		if (environment->head)
 			print_env(environment);
 		else
-			return(0);
+			return (0);
 	}
 	else
 	{

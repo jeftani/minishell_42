@@ -6,7 +6,7 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 15:35:47 by ajeftani          #+#    #+#             */
-/*   Updated: 2023/07/13 19:41:46 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/23 15:09:33 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,4 @@ void	built_env(t_env *environment, char **cmd)
 		ft_putstr_fd(": No such file or directory\n", 2);
 		exit(EXIT_FAILURE);
 	}
-	//return (g_exit);
 }

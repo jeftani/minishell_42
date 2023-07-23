@@ -6,7 +6,7 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 15:18:31 by ajeftani          #+#    #+#             */
-/*   Updated: 2023/07/22 07:46:46 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/23 15:14:22 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,25 +51,24 @@ void	ft_cont(char *path, t_con *con, char **env)
 	}
 }
 
-char	*search_env_elem2(char *key, char **env , t_env *envi)
+char	*search_env_elem2(char *key, char **env, t_env *envi)
 {
-	int		location;
-	int		i;
-	char	*res;
+	int			location;
+	int			i;
+	char		*res;
 	t_env_elem	*tmp;
 
 	i = 0;
 	tmp = envi->head;
 	if (!ft_strcmp(key, "?"))
 		return ("1");
-
 	while (env[i] && ft_strncmp12(key, env[i], ft_strlen(tmp->key)))
 	{
 		i++;
 		tmp = tmp->next;
 	}
 	//while (env[i] && ft_strncmp12(key, env[i], ft_strlen(env[i])))
-		//i++;
+	//i++;
 	if (!env[i])
 		return (NULL);
 	location = ft_strchr1(env[i], '=');

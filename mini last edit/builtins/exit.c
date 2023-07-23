@@ -6,7 +6,7 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 16:12:17 by ajeftani          #+#    #+#             */
-/*   Updated: 2023/07/17 03:28:28 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/23 15:11:33 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,15 +85,11 @@ void	ft_continue5(char **cmd, t_env *environment)
 		//trimDoubleQuotes(cmd[1]);
 		while (cmd[1][j])
 		{
-
-			if (ft_isdigit(cmd[1][j]) || (ft_atoi(cmd[1]) != 0 && ft_atoi(cmd[1]) != -1))
-			{
+			if (ft_isdigit(cmd[1][j]) || (ft_atoi(cmd[1]) != 0
+					&& ft_atoi(cmd[1]) != -1))
 				j++;
-			}
 			else
-			{
 				exit_status(cmd, 2);
-			}
 		}
 		printf("exit\n");
 		exit(ft_atoi(cmd[1]));

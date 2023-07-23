@@ -6,31 +6,30 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 23:57:06 by ajeftani          #+#    #+#             */
-/*   Updated: 2023/07/17 03:21:11 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/23 15:15:10 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void ft_link(t_env_elem	*newelem,t_env_elem	*present)
+void	ft_link(t_env_elem *newelem, t_env_elem *present)
 {
-
 	if (ft_strchr(newelem->key, '+') && present->value)
-		{
-			present->value = ft_strjoin(present->value, newelem->value);
-			free(newelem->value);
-		}
-	else if(ft_strchr(newelem->key, '=') && present->value)
-		{
-			present->value = ft_strjoin(present->value, newelem->value);
-			free(newelem->value);
-		}
-		else
-		{
-			printf("map\n");
-			present->value = newelem->value;
-			//free(present->value);
-		}
+	{
+		present->value = ft_strjoin(present->value, newelem->value);
+		free(newelem->value);
+	}
+	else if (ft_strchr(newelem->key, '=') && present->value)
+	{
+		present->value = ft_strjoin(present->value, newelem->value);
+		free(newelem->value);
+	}
+	else
+	{
+		printf("map\n");
+		present->value = newelem->value;
+		//free(present->value);
+	}
 }
 
 int	ft_strncmp12(char *s1, char *s2, unsigned int n)
@@ -68,8 +67,9 @@ void	ft_maintain(char **cmd, int i, int j, t_env *environment)
 			i++;
 		if (i < ft_strchr2(cmd[1], '='))
 		{
-			if(environment->l != 10)
-				ft_puterr(cmd[0], cmd[j], "not a valid identifier", EXIT_FAILURE);
+			if (environment->l != 10)
+				ft_puterr(cmd[0], cmd[j], "not a valid identifier",
+					EXIT_FAILURE);
 			break ;
 			//test here cuz when it break will return exit status 0 which is success.
 		}

@@ -6,22 +6,11 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 02:01:12 by ajeftani          #+#    #+#             */
-/*   Updated: 2023/07/22 05:36:28 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/23 15:46:15 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-t_env	*find_it(t_env *environment, char *key)
-{
-	while (environment->head)
-	{
-		if (ft_strcmp(key, environment->head->key) == 0)
-			return (environment);
-		environment->head = environment->head->next;
-	}
-	return (NULL);
-}
 
 char	**retreive_path(t_env *environment, t_lexer *lexer)
 {
@@ -30,10 +19,7 @@ char	**retreive_path(t_env *environment, t_lexer *lexer)
 	int		i;
 
 	i = 0;
-	if(find_it(environment, "PATH") == NULL)
-		{
-			return (ft_err(&lexer->command[0], "No such file or directory", 0),exit(127), NULL);
-		}
+	ft_handl(lexer, environment);
 	while (environment->env[i])
 	{
 		while (ft_strnstr(environment->env[i], "PATH", 4) == NULL)
@@ -53,7 +39,6 @@ char	**retreive_path(t_env *environment, t_lexer *lexer)
 		return (path);
 	}
 	return (forward(lexer));
-	return (NULL);
 }
 
 void	execute_command(t_env *environment, t_lexer *lexer)
@@ -65,10 +50,9 @@ void	execute_command(t_env *environment, t_lexer *lexer)
 	signal(SIGINT, interruption);
 	signal(SIGQUIT, interruption);
 	splited = retreive_path(environment, lexer);
-
-	while(lexer->command[0] == '\0')
+	while (lexer->command[0] == '\0')
 	{
-		return;
+		return ;
 	}
 	cmd = get_cmd(splited, lexer);
 	if (!cmd)
@@ -128,15 +112,17 @@ void	executing(t_env *environment, t_lexer *lexer)
 			ft_execute_one(environment, lexer);
 		waitchilds();
 	}
-	// free1.
-	free(lexer->details);
+	// free1. that free in run herdoc supposed to be here.
 }
 
 void	ft_execute1(t_env *environment, t_lexer *lexer)
 {
 	if (!run_heredoc(lexer, environment))
+	{
 		// means if it return 0 which is success it will convert to 1 and enter that shit. sus here commentaire with if it is ignored.
 		executing(environment, lexer);
+		free(lexer->details);
+	}
 	else
 		g_exit = 1;
 }
