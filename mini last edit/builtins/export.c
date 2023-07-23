@@ -6,7 +6,7 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 09:12:35 by ajeftani          #+#    #+#             */
-/*   Updated: 2023/07/17 03:06:32 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/23 14:26:29 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,12 @@ int	export(t_env *environment, char **cmd)
 	environment->l = 0;
 	j = 1;
 	if (!cmd[1])
-		print_env(environment);
+	{
+		if(environment->head)
+			print_env(environment);
+		else
+			return(0);
+	}
 	else
 	{
 		if (!ft_is_alpha(cmd[1][i]))
