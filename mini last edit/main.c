@@ -6,7 +6,7 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 00:13:44 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/22 04:09:11 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/23 10:37:52 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int ac, char **av, char **env)
 	int		i;
 	int		j;
 	t_env	*environment;
-
+	//this is a test
 	(void)av;
 	if (ac != 1)
 		return (printf("❌\033[0;31m ERROR ❌ \033[0m\n"), 1);
