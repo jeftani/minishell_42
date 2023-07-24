@@ -6,7 +6,7 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 02:11:11 by ajeftani          #+#    #+#             */
-/*   Updated: 2023/07/18 23:26:12 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/24 05:24:19 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	dir(char *str)
 	}
 	else if (!ft_strncmp("..", str, 3))
 	{
-		ft_putstr_fd("Minishell: ..: command not found 9 \n", 2);
+		ft_putstr_fd("Minishell: ..: command not found3\n", 2);
 		g_exit = 127;
 		return (g_exit);
 	}

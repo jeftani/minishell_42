@@ -6,7 +6,7 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 02:19:11 by ajeftani          #+#    #+#             */
-/*   Updated: 2023/07/21 07:58:14 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/24 06:42:36 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,16 @@ char	*get_cmd(char **splited, t_lexer *lexer)
 	char	*temp;
 	char	*res;
 
+	i = 0;
 	if (!splited)
 	{
 		return (ft_strdup(lexer->command));
 	}
 	if (ft_strchrr(lexer->command, '/'))
 	{
+		while(lexer->command[i] && lexer->command[i] != ' ')
+			i++;
+		lexer->command[i] = '\0';
 		return (lexer->command);
 	}
 	i = 0;
@@ -96,7 +100,9 @@ char	*get_cmd(char **splited, t_lexer *lexer)
 		res = ft_strjoin(temp, lexer->details->string[0]); //[0]
 		//free(temp);
 		if (access(res, F_OK) == 0)
+		{
 			return (res);
+		}
 		//free(splited);
 		i++;
 	}
