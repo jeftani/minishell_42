@@ -6,7 +6,7 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 02:01:12 by ajeftani          #+#    #+#             */
-/*   Updated: 2023/07/24 06:43:44 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/25 05:05:25 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	execute_command(t_env *environment, t_lexer *lexer)
 	{
 		return ;
 	}
-
 	cmd = get_cmd(splited, lexer);
 	if (!cmd)
 	{
@@ -124,7 +123,7 @@ void	ft_execute1(t_env *environment, t_lexer *lexer)
 	{
 		// means if it return 0 which is success it will convert to 1 and enter that shit. sus here commentaire with if it is ignored.
 		executing(environment, lexer);
-		free(lexer->details);
+		//free(lexer->details);
 	}
 	else
 		g_exit = 1;

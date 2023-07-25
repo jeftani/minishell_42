@@ -6,7 +6,7 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 03:15:47 by ajeftani          #+#    #+#             */
-/*   Updated: 2023/07/24 05:24:11 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/24 11:10:51 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	ft_puterrfree(char *cmd, char *arg, char *msg, int errnum)
 	else
 		write(2, arg, ft_strlen(arg));
 	g_exit = errnum;
-	free(arg);
+		free(arg);
 	return (errnum);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 10:43:30 by ajeftani          #+#    #+#             */
-/*   Updated: 2023/07/09 15:17:53 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/24 12:16:44 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_countinuous(char **cmd, t_env *enviroment)
 	char	*value;
 
 	value = NULL;
-	if (!ft_strcmp(cmd[1], "~") || !ft_strncmp1(cmd[1], "--", 2))
+	if (!ft_strncmp1(cmd[1], "~",ft_strlen(cmd[1])) || !ft_strncmp1(cmd[1], "--", 2))
 	{
 		value = initial_path("$HOME", enviroment->env);
 		if (chdir(value) != 0)
@@ -104,11 +104,9 @@ char	*initial_path(char *path, char **env)
 int	cd(t_env *environment, char **cmd)
 {
 	char	*res;
-	char	**arr;
 	char	cdp[2000];
 	char	cwd[2000];
 
-	arr = NULL;
 	getcwd(cdp, sizeof(cdp));
 	if (!cmd[1])
 	{
@@ -124,7 +122,10 @@ int	cd(t_env *environment, char **cmd)
 		free(res);
 	}
 	else
+	{
+		path(cmd);
 		ft_countinuous(cmd, environment);
-	another(arr, cdp, cwd, environment);
-	return (0);
+	}
+	another(cdp, cwd, environment);
+	return(0);
 }

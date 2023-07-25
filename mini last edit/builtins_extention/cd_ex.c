@@ -6,14 +6,17 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 15:18:31 by ajeftani          #+#    #+#             */
-/*   Updated: 2023/07/23 15:14:22 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/24 12:14:52 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-void	another(char **arr, char *cdp, char *cwd, t_env *environment)
+void	another(char *cdp, char *cwd, t_env *environment)
 {
+	char	**arr;
+	arr = NULL;
+
 	getcwd(cwd, sizeof(cwd));
 	ft_change_dir(cwd, cdp, environment);
 	arr = creat_double_array_env(environment);
@@ -74,4 +77,14 @@ char	*search_env_elem2(char *key, char **env, t_env *envi)
 	location = ft_strchr1(env[i], '=');
 	res = ft_substr(env[i], location + 1, (ft_strlen(env[i]) - location));
 	return (res);
+}
+
+void path(char **cmd)
+{
+    if (cmd[1][0] == '~' && cmd[1][1] == '/')
+    {
+        char *newString = ft_substr(cmd[1], 2, ft_strlen(cmd[1]));
+        free(cmd[1]);
+        cmd[1] = newString;
+    }
 }

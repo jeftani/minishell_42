@@ -6,7 +6,7 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 00:12:21 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/23 15:47:12 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/24 12:16:58 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ typedef struct s_env
 }						t_env;
 
 //builtins
+void					path(char **cmd);
 void					ft_change_dir(char *after, char *before,
 							t_env *environment);
 char					*search_env_elem1(char *key, char **env);
@@ -171,7 +172,7 @@ int						ft_directerror(char *msg, char *utils);
 void					free_paths(char **paths);
 void					error_execv(t_lexer *lexer, char **paths);
 char					*ft_strchrr(const char *s, int c);
-void					another(char **arr, char *cdp, char *cwd,
+void					another(char *cdp, char *cwd,
 							t_env *environment);
 int						continuous(char *value, char **cmd);
 void					ft_cont(char *path, t_con *con, char **env);
