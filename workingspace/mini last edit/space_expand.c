@@ -6,7 +6,7 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 05:10:43 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/25 13:04:03 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/26 01:30:45 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,9 @@ char	*expand(char *cmd_line, t_env *env,t_lexer *lexer)
 
 	if (!strchr(cmd_line, '$'))
 		return (cmd_line);
+	if(cmd_line[0] == '$' && cmd_line[1] == '?')
+		return(ft_itoa(g_exit));
+	//free();
 	i = -1;
 	new = ft_strdup("");
 	while (cmd_line[++i])

@@ -6,7 +6,7 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 00:13:44 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/25 13:29:45 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/26 01:55:14 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,16 @@ int	main(int ac, char **av, char **env)
 				}
 				while(lexer && lexer->details && lexer->details->string && lexer->details->string[i])
 				{
-								lexer->details->string[i] = expand(lexer->details->string[i], environment,lexer);
-								i++;
+								//char **splited;
+								//lexer->details->string[i] = expand(lexer->details->string[i], environment,lexer);
+								//if(strchr(lexer->details->string[i],' ') && !strchr(lexer->details->string[i],'='))
+								//{
+								//		splited = ft_split(lexer->details->string[i],' ');
+								//			lexer->details->string = splited;
+								//}
+								//else
+									lexer->details->string[i] = expand(lexer->details->string[i], environment,lexer);
+									i++;
 				}
 				i = 0;
 				while(lexer && lexer->details && lexer->details->string && lexer->details->string[i] && lexer->details->string[i][0] == '$')
