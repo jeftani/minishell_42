@@ -6,7 +6,7 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 15:08:41 by ajeftani          #+#    #+#             */
-/*   Updated: 2023/07/26 02:43:13 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/26 03:24:19 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,19 @@ int	echo(char **cmd)
 	{
 		write(1, "\n", 1);
 	}
-	while (cmd[i + 1] && cmd[i + 1][0] == '-' && cmd[i + 1][1] == 'n')
+	while (cmd[i + 1] && cmd[i + 1][j] == '-' && cmd[i + 1][j + 1] == 'n')
 	{
-		flag = 1;
-		++i;
+		j = 0;
+		while(cmd[i + 1][j + 1] == 'n')
+			j++;
+		if(cmd[i + 1][j + 1] == '\0')
+		{
+			flag = 1;
+			++i;
+			j = 0;
+		}
+		else
+			break;
 	}
 	while (cmd[++i])
 	{
