@@ -6,7 +6,7 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 03:38:07 by ajeftani          #+#    #+#             */
-/*   Updated: 2023/07/22 04:27:42 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/26 09:44:49 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	**creat_double_array_env(t_env *environment)
 
 	temp = environment->head;
 	arr = malloc((environment->size + 1) * sizeof(char *));
-	//printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, arr);
+	printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, arr);
 	if (!arr)
 	{
 		return (NULL);
@@ -73,7 +73,7 @@ t_env_elem	*new_element(char *line)
 	index = 0;
 	index = ft_strchr1(line, '=');
 	env_element = malloc(sizeof(t_env_elem));
-	//printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, env_element);
+	printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, env_element);
 	env_element->next = NULL;
 	env_element->prev = NULL;
 	if (index != 0)
@@ -95,7 +95,7 @@ t_env_elem	*new_element(char *line)
 t_env	*inisialize(t_env *environment)
 {
 	environment = malloc(sizeof(t_env));
-	//printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, environment);
+	printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, environment);
 	if (!environment)
 		return (NULL);
 	environment->head = NULL;

@@ -6,7 +6,7 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 10:02:29 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/18 00:48:50 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/26 09:44:34 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*ft_itoa(int n)
 		length++;
 	}
 	str = (char *)malloc(sizeof(char) * length + 1);
-	//printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, str);
+	printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, str);
 	if (!str)
 		return (NULL);
 	str[length] = '\0';

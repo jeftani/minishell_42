@@ -6,7 +6,7 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 03:20:28 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/25 13:40:24 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/26 09:44:17 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ t_cmd	*creation_a(t_cmd *details, t_count count)
 	if (count.r_in)
 	{
 		details->r_in_sig = (char **)malloc((count.r_in + 1) * sizeof(char *));
-		//printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, details->r_in_sig);
+		printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, details->r_in_sig);
 		details->r_in_file = (char **)malloc((count.r_in + 1) * sizeof(char *));
-		//printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, details->r_in_file);
+		printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, details->r_in_file);
 		details->r_in_sig[count.r_in] = NULL;
 		details->r_in_file[count.r_in] = NULL;
 	}
@@ -75,10 +75,10 @@ t_cmd	*creation_a(t_cmd *details, t_count count)
 	{
 		details->r_out_sig = (char **)malloc((count.r_out + 1)
 				* sizeof(char *));
-		//printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, details->r_out_sig);
+		printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, details->r_out_sig);
 		details->r_out_file = (char **)malloc((count.r_out + 1)
 				* sizeof(char *));
-		//printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, details->r_out_file);
+		printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, details->r_out_file);
 		details->r_out_sig[count.r_out] = NULL;
 		details->r_out_file[count.r_out] = NULL;
 	}
@@ -91,10 +91,10 @@ t_cmd	*creation_b(t_cmd *details, t_count count)
 	{
 		details->r_app_sig = (char **)malloc((count.r_app + 1)
 				* sizeof(char *));
-		//printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, details->r_app_sig);
+		printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, details->r_app_sig);
 		details->r_app_file = (char **)malloc((count.r_app + 1)
 				* sizeof(char *));
-		//printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, details->r_app_file);
+		printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, details->r_app_file);
 		details->r_app_sig[count.r_app] = NULL;
 		details->r_app_file[count.r_app] = NULL;
 	}
@@ -102,10 +102,10 @@ t_cmd	*creation_b(t_cmd *details, t_count count)
 	{
 		details->herdoc_sig = (char **)malloc((count.herd + 1)
 				* sizeof(char *));
-		//printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, details->herdoc_sig);
+		printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, details->herdoc_sig);
 		details->herdoc_lim = (char **)malloc((count.herd + 1)
 				* sizeof(char *));
-		//printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, details->herdoc_lim);
+		printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, details->herdoc_lim);
 		details->herdoc_sig[count.herd] = NULL;
 		details->herdoc_lim[count.herd] = NULL;
 	}

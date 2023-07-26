@@ -6,7 +6,7 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 18:13:29 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/18 21:19:17 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/26 09:43:54 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_lexer	*create_lexer(char *command)
 	t_lexer	*lexer;
 
 	lexer = (t_lexer *)malloc(sizeof(t_lexer));
-	//printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, lexer);
+	printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, lexer);
 	if (lexer)
 	{
 		lexer->command = command;
@@ -31,7 +31,7 @@ t_lexer	*create_lexer(char *command)
 void	split_pipe_help_a(char *cmd_line, t_splity *s)
 {
 	s->tab = (char *)malloc((ft_strlen(cmd_line) + 1) * sizeof(char));
-	//printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, s->tab);
+	printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, s->tab);
 	if (!(s->tab))
 		return ;
 	s->i = -1;

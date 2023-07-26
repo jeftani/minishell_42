@@ -6,7 +6,7 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:34:54 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/18 07:17:37 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/26 09:44:25 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	**remove_empty_element(char *cmd_line)
 	while (splited_arr[len])
 		len++;
 	new_arr = (char **)malloc((len + 1) * sizeof(char *));
-	//printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, new_arr);
+	printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, new_arr);
 	i = -1;
 	while (++i <= len)
 		new_arr[i] = NULL;
@@ -57,7 +57,7 @@ t_lexer	*get_token(t_lexer **lexer, char *cmd_line)
 	{
 		count = get_count(splited_arr, i - 1);
 		head->details = malloc(sizeof(t_cmd));
-		//printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, head->details);
+		printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, head->details);
 		head->details = creation_b(head->details, count);
 		index = inis_index();
 		while (splited_arr[i] && i != count.end)

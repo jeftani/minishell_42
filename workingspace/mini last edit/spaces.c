@@ -6,7 +6,7 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 12:07:24 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/18 00:50:06 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/26 09:43:47 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	add_spaces(char **cmd_line)
 	int		j;
 
 	stock = malloc((how_much_outside(*cmd_line) + ft_strlen(*cmd_line) + 1));
-	//printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__,stock);
+	printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__,stock);
 	i = -1;
 	j = 0;
 	while (++i < ft_strlen(*cmd_line))

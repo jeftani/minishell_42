@@ -3,7 +3,7 @@ NAME		=	minishell
 LIB			=	libft/libft.a
 CC			=	@cc
 
-CFLAGS		=	-Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS		=	-Wall -Wextra -Werror #-fsanitize=address -g3
 READLINE	=	-lreadline
 
 SRC_LIB		=	libft/ft_isalpha.c libft/ft_isdigit.c libft/ft_isalnum.c libft/ft_isascii.c \

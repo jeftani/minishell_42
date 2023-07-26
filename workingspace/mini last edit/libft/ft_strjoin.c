@@ -6,7 +6,7 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 16:39:00 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/18 00:48:53 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/26 09:44:38 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	if (!s1 || !s2)
 		return (NULL);
 	new_s = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	//printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, new_s);
+	printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__, new_s);
 
 	if (!new_s)
 		return (NULL);

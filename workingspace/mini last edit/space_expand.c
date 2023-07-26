@@ -6,7 +6,7 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 05:10:43 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/26 01:30:45 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/26 11:47:50 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	arg_split_help(char *cmd_line, t_splity *s)
 {
 	s->tab = (char *)malloc((ft_strlen(cmd_line) + 1) * sizeof(char));
-	//printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__,s->tab);
+	printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__,s->tab);
 	if (!(s->tab))
 		return ;
 	s->i = -1;
@@ -41,7 +41,7 @@ char	**arg_split(char *cmd_line)
 
 	arg_split_help(cmd_line, &s);
 	s.res = (char **)malloc((s.count + 1) * sizeof(char *));
-	//printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__,s.res);
+	printf(": ===> file : %s, line : %d, adress: %p\n", __FILE__, __LINE__,s.res);
 	if (!(s.res))
 	{
 		free(s.tab);
