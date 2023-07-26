@@ -46,7 +46,8 @@ int	main(int ac, char **av, char **env)
 		cmd_line = readline("MINISHELL ➡ ");
 		if (!cmd_line)
 			break ;
-		add_history(cmd_line);
+		if(ft_strncmp(cmd_line,"\0",1))
+			add_history(cmd_line);
 		if (!parse(cmd_line))
 		{
 			add_spaces(&cmd_line);
