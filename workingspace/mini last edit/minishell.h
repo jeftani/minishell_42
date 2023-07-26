@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 00:12:21 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/24 12:16:58 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/26 12:13:26 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,8 +172,7 @@ int						ft_directerror(char *msg, char *utils);
 void					free_paths(char **paths);
 void					error_execv(t_lexer *lexer, char **paths);
 char					*ft_strchrr(const char *s, int c);
-void					another(char *cdp, char *cwd,
-							t_env *environment);
+void					another(char *cdp, char *cwd, t_env *environment);
 int						continuous(char *value, char **cmd);
 void					ft_cont(char *path, t_con *con, char **env);
 void					ft_continue5(char **cmd, t_env *environment);
@@ -199,7 +198,7 @@ void					case3(t_lexer *lexer, t_var *var);
 void					case2(t_lexer *lexer, t_var *var);
 void					ft_link(t_env_elem *newelem, t_env_elem *present);
 void					ft_err(char *str, char *message, int c);
-char					*search_env_elem2(char *key, char **env , t_env *envi);
+char					*search_env_elem2(char *key, char **env, t_env *envi);
 t_env					*find_it(t_env *environment, char *key);
 char					**ft_handl(t_lexer *lexer, t_env *environment);
 
@@ -219,6 +218,10 @@ int						is_unclosed_quoate(char *cmd_line);
 int						is_valid_closing(int *open_count);
 int						check_parenthesis(char *cmd_line);
 int						check_braces(char *cmd_line);
+
+//	new_parse.c
+int						pipe_derec(char *cmd_line);
+int						check_oper2(char c, char *cmd_line);
 
 //	spaces.c
 int						is_inside_quotes(char *str, int pos);
@@ -245,7 +248,7 @@ t_lexer					*split_pipe(char *cmd_line);
 //	space_expand.c
 char					*get_expanded(char *cmd_line, char *new, int *i,
 							t_env *env);
-char					*expand(char *cmd_line, t_env *env,t_lexer *lexer);
+char					*expand(char *cmd_line, t_env *env, t_lexer *lexer);
 void					arg_split_help(char *cmd_line, t_splity *s);
 char					**arg_split(char *cmd_line);
 

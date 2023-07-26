@@ -6,7 +6,7 @@
 /*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 11:54:07 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/16 23:55:09 by gloukas          ###   ########.fr       */
+/*   Updated: 2023/07/26 12:02:55 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	is_empty(char *cmd_line)
 	while (cmd_line[i] && (cmd_line[i] == 32 || (cmd_line[i] >= 9
 				&& cmd_line[i] <= 13)))
 		i++;
-	if (!cmd_line[i] || cmd_line[i] == '\n')
+	if (!cmd_line[i] || cmd_line[i] == '\n' || cmd_line[i] == ':')
 	{
 		g_exit = 0;
 		return (0);
@@ -33,26 +33,25 @@ int	is_empty(char *cmd_line)
 	return (1);
 }
 
-int	check_oper(char c, char *cmd_line, int x)
+int	check_oper1(char *cmd_line)
 {
 	int	i;
 
 	i = 0;
 	while (cmd_line[i])
 	{
-		if (cmd_line[i] == c)
+		if ((cmd_line[i] == ';' || cmd_line[i] == '\\')
+			&& !is_inside_quotes(cmd_line, i)
+			&& !is_inside_single_quotes(cmd_line, i))
+			return (1);
+		if (cmd_line[i] == '|' && !is_inside_quotes(cmd_line, i)
+			&& !is_inside_single_quotes(cmd_line, i))
 		{
-			if (cmd_line[i + 1] == c && !is_inside_quotes(cmd_line, i)
-				&& !is_inside_single_quotes(cmd_line, i))
-			{
-				if (x == 1)
-					return (1);
-			}
-			if (x == 2 && cmd_line[i + 1] == c && cmd_line[i + 2] == c
-				&& !is_inside_quotes(cmd_line, i + 1)
-				&& !is_inside_single_quotes(cmd_line, i + 1)
-				&& !is_inside_quotes(cmd_line, i + 2)
-				&& !is_inside_single_quotes(cmd_line, i + 2))
+			i++;
+			while (cmd_line[i] && (cmd_line[i] == 32 || (cmd_line[i] >= 9
+						&& cmd_line[i] <= 13)))
+				i++;
+			if (cmd_line[i] && cmd_line[i] == '|')
 				return (1);
 		}
 		i++;
@@ -97,10 +96,12 @@ int	check_derec(char *cmd_line)
 
 int	parse(char *cmd_line)
 {
+	if (pipe_derec(cmd_line))
+		return (1);
 	if (!is_empty(cmd_line))
 		return (2);
-	if (check_oper('|', cmd_line, 1) || check_oper('>', cmd_line, 2)
-		|| check_oper('<', cmd_line, 2))
+	if (check_oper1(cmd_line) || check_oper2('>', cmd_line) || check_oper2('<',
+			cmd_line))
 		return (1);
 	if (check_pipe(cmd_line, '|') || is_unclosed_quoate(cmd_line)
 		|| check_derec(cmd_line) || check_parenthesis(cmd_line)
