@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   space_expand.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 05:10:43 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/28 16:09:45 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/28 18:26:45 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	arg_split_help(char *cmd_line, t_splity *s)
 {
 	s->tab = (char *)ft_malloc((ft_strlen(cmd_line) + 1) * sizeof(char));
-
 	if (!(s->tab))
 		return ;
 	s->i = -1;

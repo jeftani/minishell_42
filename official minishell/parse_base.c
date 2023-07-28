@@ -6,7 +6,7 @@
 /*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 11:54:07 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/26 12:02:55 by gloukas          ###   ########.fr       */
+/*   Updated: 2023/07/28 18:09:39 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,14 @@ int	is_empty(char *cmd_line)
 	int	i;
 
 	if (!ft_strlen(cmd_line))
-	{
-		g_exit = 0;
 		return (0);
-	}
 	i = 0;
 	while (cmd_line[i] && (cmd_line[i] == 32 || (cmd_line[i] >= 9
 				&& cmd_line[i] <= 13)))
 		i++;
 	if (!cmd_line[i] || cmd_line[i] == '\n' || cmd_line[i] == ':')
+		return (0);
+	if (cmd_line[i] == ':')
 	{
 		g_exit = 0;
 		return (0);

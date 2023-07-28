@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd_ex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 15:18:31 by ajeftani          #+#    #+#             */
-/*   Updated: 2023/07/25 11:36:12 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/28 20:26:13 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	another(char *cdp, char *cwd, t_env *environment)
 {
 	char	**arr;
-	arr = NULL;
 
+	arr = NULL;
 	getcwd(cwd, sizeof(cwd));
 	ft_change_dir(cwd, cdp, environment);
 	arr = creat_double_array_env(environment);
@@ -65,7 +65,7 @@ char	*search_env_elem2(char *key, char **env, t_env *envi)
 	tmp = envi->head;
 	if (!ft_strcmp(key, "?"))
 		return ("1");
-	while (env[i] && ft_strncmp12(key, env[i], ft_strlen(tmp->key)))
+	while (env[i] && ft_strncmp12(key, env[i], ft_strlen(key)))
 	{
 		i++;
 		tmp = tmp->next;
@@ -79,12 +79,14 @@ char	*search_env_elem2(char *key, char **env, t_env *envi)
 	return (res);
 }
 
-void path(char **cmd)
+void	path(char **cmd)
 {
-    if (cmd[1][0] == '~' && cmd[1][1] == '/')
-    {
-        char *newString = ft_substr(cmd[1], 2, ft_strlen(cmd[1]));
-        free(cmd[1]);
-        cmd[1] = newString;
-    }
+	char	*newString;
+
+	if (cmd[1][0] == '~' && cmd[1][1] == '/')
+	{
+		newString = ft_substr(cmd[1], 2, ft_strlen(cmd[1]));
+		free(cmd[1]);
+		cmd[1] = newString;
+	}
 }
