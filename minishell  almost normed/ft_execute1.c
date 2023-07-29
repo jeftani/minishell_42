@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_execute1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 02:01:12 by ajeftani          #+#    #+#             */
-/*   Updated: 2023/07/29 01:18:38 by gloukas          ###   ########.fr       */
+/*   Updated: 2023/07/29 14:38:46 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	execute_command(t_env *environment, t_lexer *lexer)
 		if (lexer->command[0] == '$')
 			lexer->command = "$";
 		ft_putstr_fd(ft_strtrim(&lexer->command[0], "\""), 2);
-		ft_putstr_fd(": Command not found2\n", 2);
+		ft_putstr_fd(": Command not found\n", 2);
 		exit(127);
 	}
 	num = execve(cmd, lexer->details->string, environment->env);

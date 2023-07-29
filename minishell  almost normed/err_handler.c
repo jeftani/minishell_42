@@ -6,7 +6,7 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 03:15:47 by ajeftani          #+#    #+#             */
-/*   Updated: 2023/07/29 11:01:19 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/29 14:38:42 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	error_execv(t_lexer *lexer, char **paths)
 	{
 		ft_putstr_fd("Minishell: ", 2);
 		ft_putstr_fd(&lexer->command[0], 2);
-		ft_putstr_fd(": Command not found1\n", 2);
+		ft_putstr_fd(": Command not found\n", 2);
 		exit(127);
 	}
 	else if (access(&lexer->command[0], F_OK) == 0)

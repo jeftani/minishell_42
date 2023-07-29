@@ -6,7 +6,7 @@
 /*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 00:12:21 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/29 11:13:11 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/29 15:15:41 by ajeftani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,6 +214,9 @@ t_env					*find_it(t_env *environment, char *key);
 char					**ft_handl(t_lexer *lexer, t_env *environment);
 void					case7(t_var *var, char *name);
 void					*ft_malloc(size_t size);
+void					check_cmd(char *cmd_line);
+void					ft_else(char *cmd_line);
+void					ft_boucle(t_lexer *lexer, int i, t_env *environment);
 
 //execution
 void					ft_redirection(t_lexer *lexer);
