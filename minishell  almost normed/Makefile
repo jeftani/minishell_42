@@ -3,8 +3,7 @@ NAME		=	minishell
 LIB			=	libft/libft.a
 CC			=	@cc
 
-CFLAGS		=	-Wall -Wextra -Werror #-fsanitize=address -g3
-READLINE	=	-lreadline
+CFLAGS		=	-Wall -Wextra -Werror
 
 SRC_LIB		=	libft/ft_isalpha.c libft/ft_isdigit.c libft/ft_isalnum.c libft/ft_isascii.c \
 				libft/ft_isprint.c libft/ft_strlen.c libft/ft_memset.c libft/ft_bzero.c \
@@ -28,7 +27,7 @@ all		:	$(NAME)
 
 $(NAME)	: $(OBJ) $(LIB)
 	@printf "\e[38;5;236m \n ⚡︎⚡︎⚡︎⚡︎⚡︎⚡︎ COMPILING ⚡︎⚡︎⚡︎⚡︎⚡︎⚡︎\n\e[0m\n"
-	$(CC) $(CFLAGS) $(READLINE) $(OBJ) $(LIB) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(LIB) -o $(NAME)  -L$(shell  brew --prefix readline)/lib  -lreadline
 	@stty -echoctl
 	@printf "\e[38;5;216m→	successfully build	✔︎\e[0m\n"
 

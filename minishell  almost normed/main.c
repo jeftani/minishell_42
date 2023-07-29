@@ -6,7 +6,7 @@
 /*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 00:13:44 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/29 21:48:52 by gloukas          ###   ########.fr       */
+/*   Updated: 2023/07/29 23:22:33 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,9 @@ void	interruption(int signal)
 {
 	if (signal == SIGINT)
 	{
+		write(1, "\n", 1);
 		rl_on_new_line();
-		// rl_replace_line("", 0);
+		rl_replace_line("", 0);
 		rl_redisplay();
 	}
 	else
