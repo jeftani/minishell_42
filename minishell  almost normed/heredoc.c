@@ -21,7 +21,8 @@ void	to_do_her(char *delimiter, t_env *env)
 {
 	char	*str;
 	int		fd;
-
+	
+	signal(SIGINT, sigint_hand);
 	fd = open("/tmp/minishell", O_RDWR | O_TRUNC | O_CREAT, 0666);
 	if (fd < 0)
 	{
