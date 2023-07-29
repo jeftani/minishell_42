@@ -14,7 +14,7 @@
 
 void	ft_back_it(t_lexer *lexer)
 {
-	if (lexer->details->r_out_file)
+	if (lexer->details->r_out_file || lexer->details->r_app_file)
 	{
 		close(1);
 		dup2(lexer->original_stdout, 1);
@@ -79,7 +79,7 @@ void	ft_execute(t_env *environment, char **cmd, t_lexer *lexer)
 	int	i;
 
 	i = 0;
-	if (lexer->details->r_out_file)
+	if (lexer->details->r_out_file || lexer->details->r_app_file)
 	{
 		ft_redirection(lexer);
 		check_filed(lexer);
