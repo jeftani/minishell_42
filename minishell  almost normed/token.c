@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 16:34:54 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/29 11:19:41 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/29 21:48:39 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,9 @@ t_lexer	*get_token(t_lexer **lexer, char *cmd_line)
 		head->details = ft_malloc(sizeof(t_cmd));
 		head->details = creation_b(head->details, count);
 		index = inis_index();
-		while (splited_arr[i] && i != count.end)
-		{
+		i--;
+		while (splited_arr[++i] && i != count.end)
 			head = function_help_a(head, &index, splited_arr, &i);
-			i++;
-		}
 		if (splited_arr[i])
 			i++;
 		head = head->next;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 00:12:21 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/29 15:15:41 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/29 22:09:48 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,6 +261,7 @@ void					split_pipe_help_a(char *cmd_line, t_splity *s);
 void					split_pipe_help_b(char *cmd_line, t_splity *s,
 							t_lexer **head);
 t_lexer					*split_pipe(char *cmd_line);
+char					*expand_norm(char *cmd_line, char *new, int i);
 
 //	space_expand.c
 char					*get_expanded(char *cmd_line, char *new, int *i,
@@ -268,6 +269,8 @@ char					*get_expanded(char *cmd_line, char *new, int *i,
 char					*expand(char *cmd_line, t_env *env, t_lexer *lexer);
 void					arg_split_help(char *cmd_line, t_splity *s);
 char					**arg_split(char *cmd_line);
+int						help_expand(char *cmd_line, t_env *env, int i,
+							char	**new);
 
 //	token_help.c
 t_count					get_count(char **splited_arr, int i);

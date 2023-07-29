@@ -6,7 +6,7 @@
 /*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 18:13:29 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/29 01:25:28 by gloukas          ###   ########.fr       */
+/*   Updated: 2023/07/29 22:10:02 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,14 @@ t_lexer	*split_pipe(char *cmd_line)
 	split_pipe_help_b(cmd_line, &s, &head);
 	free(s.tab);
 	return (head);
+}
+
+char	*expand_norm(char *cmd_line, char *new, int i)
+{
+	char	c[2];
+
+	c[0] = cmd_line[i];
+	c[1] = '\0';
+	new = ft_strjoin(new, c);
+	return (new);
 }

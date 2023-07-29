@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   token_help.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 03:20:28 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/29 11:20:43 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/29 21:40:55 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,28 +57,26 @@ t_cmd	*inisia(t_cmd *details)
 
 t_cmd	*creation_a(t_cmd *details, t_count count)
 {
+	int	i;
+
 	details = inisia(details);
+	i = sizeof(char *);
 	if (count.string)
 	{
-		details->string = (char **)ft_malloc((count.string + 1)
-				* sizeof(char *));
+		details->string = (char **)ft_malloc((count.string + 1) * i);
 		details->string[count.string] = NULL;
 	}
 	if (count.r_in)
 	{
-		details->r_in_sig = (char **)ft_malloc((count.r_in + 1)
-				* sizeof(char *));
-		details->r_in_file = (char **)ft_malloc((count.r_in + 1)
-				* sizeof(char *));
+		details->r_in_sig = (char **)ft_malloc((count.r_in + 1) * i);
+		details->r_in_file = (char **)ft_malloc((count.r_in + 1) * i);
 		details->r_in_sig[count.r_in] = NULL;
 		details->r_in_file[count.r_in] = NULL;
 	}
 	if (count.r_out)
 	{
-		details->r_out_sig = (char **)ft_malloc((count.r_out + 1)
-				* sizeof(char *));
-		details->r_out_file = (char **)ft_malloc((count.r_out + 1)
-				* sizeof(char *));
+		details->r_out_sig = (char **)ft_malloc((count.r_out + 1) * i);
+		details->r_out_file = (char **)ft_malloc((count.r_out + 1) * i);
 		details->r_out_sig[count.r_out] = NULL;
 		details->r_out_file[count.r_out] = NULL;
 	}

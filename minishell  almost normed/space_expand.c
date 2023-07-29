@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   space_expand.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 05:10:43 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/29 11:15:49 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/29 22:12:46 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ char	*expand(char *cmd_line, t_env *env, t_lexer *lexer)
 {
 	int		i;
 	char	*new;
-	char	c[2];
 
 	if (!strchr(cmd_line, '$'))
 		return (cmd_line);
@@ -101,26 +100,11 @@ char	*expand(char *cmd_line, t_env *env, t_lexer *lexer)
 	while (cmd_line[++i])
 	{
 		if (cmd_line[i] == '$' && (!is_inside_single_quotes(cmd_line, i)
-				|| (is_inside_quotes(cmd_line, i) && !is_inside_quotes(cmd_line,
-						i))))
-		{
-			if (cmd_line[i + 1] && (cmd_line[i + 1] == ' ' || cmd_line[i
-						+ 1] == '"' || cmd_line[i + 1] == '\''))
-				new = ft_strdup(cmd_line);
-			if (cmd_line[i] == '$' && cmd_line[i + 1] && cmd_line[i + 1] == '?')
-			{
-				new = ft_strjoin(new, ft_itoa(g_exit));
-				i++;
-			}
-			if (cmd_line[i] == '$' && cmd_line[i + 1])
-				new = get_expanded(cmd_line, new, &i, env);
-		}
+				|| (is_inside_quotes(cmd_line, i)
+					&& !is_inside_quotes(cmd_line, i))))
+			i = help_expand(cmd_line, env, i, &new);
 		else
-		{
-			c[0] = cmd_line[i];
-			c[1] = '\0';
-			new = ft_strjoin(new, c);
-		}
+			new = expand_norm(cmd_line, new, i);
 	}
 	free(cmd_line);
 	while (*new == 32)
@@ -130,4 +114,19 @@ char	*expand(char *cmd_line, t_env *env, t_lexer *lexer)
 		new ++;
 	}
 	return (new);
+}
+
+int	help_expand(char *cmd_line, t_env *env, int i, char	**new)
+{
+	if (cmd_line[i + 1] && (cmd_line[i + 1] == ' ' || cmd_line[i
+				+ 1] == '"' || cmd_line[i + 1] == '\''))
+		(*new) = ft_strdup(cmd_line);
+	if (cmd_line[i] == '$' && cmd_line[i + 1] && cmd_line[i + 1] == '?')
+	{
+		(*new) = ft_strjoin((*new), ft_itoa(g_exit));
+		i++;
+	}
+	if (cmd_line[i] == '$' && cmd_line[i + 1])
+		(*new) = get_expanded(cmd_line, (*new), &i, env);
+	return (i);
 }
