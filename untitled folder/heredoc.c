@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajeftani <ajeftani@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 03:18:00 by ajeftani          #+#    #+#             */
-/*   Updated: 2023/07/29 11:09:46 by ajeftani         ###   ########.fr       */
+/*   Updated: 2023/07/30 00:10:30 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	sigint_hand(void)
+void	sigint_hand(int sig)
 {
+	(void)sig;
 	exit(1);
 }
 
@@ -21,7 +22,7 @@ void	to_do_her(char *delimiter, t_env *env)
 {
 	char	*str;
 	int		fd;
-	
+
 	signal(SIGINT, sigint_hand);
 	fd = open("/tmp/minishell", O_RDWR | O_TRUNC | O_CREAT, 0666);
 	if (fd < 0)

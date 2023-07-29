@@ -6,7 +6,7 @@
 /*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 03:20:28 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/29 21:40:55 by gloukas          ###   ########.fr       */
+/*   Updated: 2023/07/30 00:24:58 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,20 @@ t_count	get_count(char **splited_arr, int i)
 	count.r_app = 0;
 	count.string = 0;
 	count.herd = 0;
-	while (splited_arr[++i] && strncmp(splited_arr[i], "|", 2) != 0)
+	while (splited_arr[++i] && ft_strncmp(splited_arr[i], "|", 2) != 0)
 	{
-		if (strncmp(splited_arr[i], ">", 2) == 0)
+		if (ft_strncmp(splited_arr[i], ">", 2) == 0)
 			count.r_out++;
-		else if (strncmp(splited_arr[i], "<", 2) == 0)
+		else if (ft_strncmp(splited_arr[i], "<", 2) == 0)
 			count.r_in++;
-		else if (strncmp(splited_arr[i], "<<", 3) == 0)
+		else if (ft_strncmp(splited_arr[i], "<<", 3) == 0)
 			count.herd++;
-		else if (strncmp(splited_arr[i], ">>", 3) == 0)
+		else if (ft_strncmp(splited_arr[i], ">>", 3) == 0)
 			count.r_app++;
-		else if ((i == 0) || (strncmp(splited_arr[i - 1], ">", 2)
-				&& strncmp(splited_arr[i - 1], "<", 2)
-				&& strncmp(splited_arr[i - 1], "<<", 3)
-				&& strncmp(splited_arr[i - 1], ">>", 3)))
+		else if ((i == 0) || (ft_strncmp(splited_arr[i - 1], ">", 2)
+				&& ft_strncmp(splited_arr[i - 1], "<", 2)
+				&& ft_strncmp(splited_arr[i - 1], "<<", 3)
+				&& ft_strncmp(splited_arr[i - 1], ">>", 3)))
 			count.string++;
 	}
 	count.end = i;

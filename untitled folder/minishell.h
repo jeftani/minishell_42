@@ -6,7 +6,7 @@
 /*   By: gloukas <gloukas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 00:12:21 by gloukas           #+#    #+#             */
-/*   Updated: 2023/07/29 23:22:19 by gloukas          ###   ########.fr       */
+/*   Updated: 2023/07/30 00:03:15 by gloukas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 # include <unistd.h>
 
 int						g_exit;
-
 typedef struct Node
 {
 	void				*address;
@@ -290,5 +289,5 @@ t_lexer					*get_token(t_lexer **lexer, char *cmd_line);
 ///	main
 void					interruption(int signal);
 //+main
-void	rl_replace_line (const char *text, int clear_undo);
+void					rl_replace_line(const char *text, int clear_undo);
 #endif
